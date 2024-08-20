@@ -1,6 +1,5 @@
 ---
 layout: post
-title: "AC Battery System"
 author: "cdeck3r"
 ---
 

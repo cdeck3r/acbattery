@@ -19,3 +19,8 @@ hiere steht das Concept
 ## Context
 
 hier steht der system context
+
+## Contact
+
+If you are having any problems, any questions or suggestions, feel free to [file a GitHub issue](https://github.com/cdeck3r/acbattery/issues/new).
+

@@ -20,7 +20,7 @@ The AC battery system comprises a lithium iron phosphate (LiFePo4) battery conne
 
 However, the processes of converting AC to DC and back to AC are subject to efficiency losses, with each conversion having an efficiency factor of less than 1. As a result, the system experiences a net negative energy balance, meaning that more energy is consumed during charging than is subsequently recovered from the battery. The system compensates for this energy loss through the integration of a PV power plant, which is connected to the AC line and supplies excess energy when charging the battery. The following diagram depicts this configuration.
 
-![AC Battery Concept with PV]
+![AC Battery Concept with PV]()
 
 When the PV system generates surplus energy, it is stored in the battery for later use. The stored energy can then be supplied to power outlets as needed. If the conversion processes are managed effectively, the overall energy balance can become positive.
 

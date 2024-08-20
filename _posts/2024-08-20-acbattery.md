@@ -1,5 +1,6 @@
 ---
 layout: post
+title: ""
 author: "cdeck3r"
 ---
 

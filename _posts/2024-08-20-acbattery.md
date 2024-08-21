@@ -63,13 +63,15 @@ In the following, there are some measurements showing the AC battery's character
 Actor model 
 communicating state machines
 
-### BMS
+![Communicating Actors]()
+
+### `bmsActor`
 
 
-### PV EXC
+### `pvActor`
 
 
-### INV DRIVER
+### `invDrvActor`
 
 
 ## Software Deployment

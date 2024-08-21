@@ -16,7 +16,7 @@ The primary objective of this project is to optimize the use of energy generated
 
 The AC battery system comprises a lithium iron phosphate (LiFePo4) battery connected to an AC charger and an inverter. The accompanying diagram illustrates how these components are integrated into the grid, where both the charger and inverter rely on AC from the standard electricity supply, hence the term "AC battery."
 
-![AC Battery Concept]()
+![AC Battery Concept](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/cdeck3r/acbattery/main/plantuml/battery.plantuml)
 
 However, the processes of converting AC to DC and back to AC are subject to efficiency losses, with each conversion having an efficiency factor of less than 1. As a result, the system experiences a net negative energy balance, meaning that more energy is consumed during charging than is subsequently recovered from the battery. The system compensates for this energy loss through the integration of a PV power plant, which is connected to the AC line and supplies excess energy when charging the battery. The following diagram depicts this configuration.
 

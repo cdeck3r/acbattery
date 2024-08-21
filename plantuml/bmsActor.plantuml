@@ -1,0 +1,58 @@
+@startuml
+[*] -> Normal
+Normal -> [*]
+
+state "Normal Operation" as Normal {
+
+ state "Off" as Off
+ state "Charge" as Charge
+ state "Feed-in" as Feed
+
+ [*] -down-> Off
+ Off -> [*]
+
+ Off --> Charge: PV_EXCESS\n[! batt_is_FULL()]
+ Charge --> Off: PV_LOW
+ Feed -> Off: BATT_LOW
+ Off --> Feed: BASELOAD_SUPPORT\n[batt_is_OK()]
+ Charge --> Off: BATT_FULL
+ Feed --> Off: PV_EXCESS
+
+ Charge: entry / charge_socket_on()
+ Charge: exit / charge_socket_off()
+
+ Feed: entry / feed_socket_on()
+ Feed: entry / inverter_driver_on()
+ Feed: exit / inverter_driver_off()
+ Feed: exit / feed_socket_off()
+
+ Feed -[#blue]-> Charge: <color:Blue>MANUAL_CHARGE_SOCKET_ON
+ Feed -[#blue]-> Off: <color:Blue>MANUAL_FEED_SOCKET_OFF
+ Charge -[#blue]-> Off: <color:Blue>MANUAL_CHARGE_SOCKET_OFF
+ Charge -[#blue]-> Feed: <color:Blue>MANUAL_FEED_SOCKET_ON
+
+ Off: entry / all_off()
+}
+
+state "Error Handling" as Error {
+ Error: entry / all_off()
+}
+
+Normal -[#red]-> Error: <color:Red>ERROR
+Error -[#green]-> Normal: <color:Green>RESUME
+
+Note right of Error
+""all_off() {""
+""  charge_socket_off()""
+""  feed_socket_off()""
+""  inverter_driver_off()""
+""}""
+end note
+
+Note left of Error
+Wait a few seconds to let remaining 
+or repated events happen before
+resuming to normal operation.
+end note
+
+@enduml

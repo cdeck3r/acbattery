@@ -1,0 +1,32 @@
+@startuml
+hide empty description
+
+state "P > 0" as Pplus
+state "//intermittent//\nP < 0" as intPminus ##[bold]green
+state "PV_EXCESS" as pvexc ##[bold]green
+state "PV_LOW" as pvlow ##[bold]red
+state "//intermittent//\nP > 0" as intPplus ##[bold]red
+
+[*] -down-> Pplus
+Pplus -> intPminus: P-
+intPminus -> Pplus: P+
+intPminus -right[#green]-> pvexc: <color:Green>after a
+pvexc --> intPplus: P+
+intPplus -up-> pvexc: P-
+intPplus -left[#red]-> pvlow: <color:Red>after b
+
+pvlow -up-> intPminus: P-
+pvlow -up-> Pplus: P+
+
+Pplus -left-> [*]
+
+pvexc: entry / bmsActor.send(PV_EXCESS)
+pvlow: entry / bmsActor.send(PV_LOW)
+
+note right of pvexc
+""bmsActor"" is the main FSM
+transitioning between 
+charge and feed-in states.
+end note
+
+@enduml

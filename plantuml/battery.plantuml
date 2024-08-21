@@ -1,0 +1,19 @@
+@startuml
+
+cloud "Power grid" as grid
+interface "Power\nsocket" as isocket
+component "Charge\nController" as chrg
+component "Battery" as batt
+component "Inverter" as inv
+interface "Power\nsocket" as osocket
+
+grid .down. isocket
+isocket )- chrg: 230V AC
+chrg - batt: DC
+batt - inv: DC
+inv -( osocket: 230V AC
+
+osocket .up. grid
+
+
+@enduml

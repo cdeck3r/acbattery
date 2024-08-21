@@ -1,0 +1,44 @@
+@startuml
+[*] -> Normal
+
+state "Inverter Driver Operation" as Normal {
+
+ state "Off" as Off
+ state "PreCharge" as PreCharge
+ state "Full Power" as Power
+
+ [*] -down-> Off
+ Off -> [*]
+
+ Off --> PreCharge: INV_DRIVER_START
+ PreCharge -> Off: INV_DRIVER_OFF
+ PreCharge -> Power: INV_PRECHARGE_TIMEOUT
+ Power -> Off: INV_DRIVER_OFF
+
+ Off: entry / inverter_driver_off()
+ PreCharge: entry / precharge_channel_on()
+ PreCharge: exit / precharge_channel_off()
+ Power: entry / power_channel_on()
+ Power: exit / power_channel_off()
+ 
+
+}
+
+state "Inverter Driver Abort Handling" as Abort {
+ Abort: entry / inverter_driver_off()
+}
+
+Abort -left-> [*]
+
+Normal -[#red]-> Abort: <color:Red>INV_DRIVER_ABORT
+'Abort -[#green]-> Normal: <color:Green>RESUME
+
+Note right of Abort
+""inverter_driver_off() {""
+""  precharge_channel_off()""
+""  power_channel_off()""
+""}""
+end note
+
+@enduml
+

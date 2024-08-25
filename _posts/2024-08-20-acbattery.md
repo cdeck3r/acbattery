@@ -67,7 +67,7 @@ In the following, there are some measurements showing the AC battery's character
 | Temp. MOSFET (with heat sink and fan)        | 58°C           |
  
 
-## Software
+## Battery Management Software
 
 The software design is structured as a set of communicating [state machines](https://en.wikipedia.org/wiki/Finite-state_machine) based on the [actor model](https://en.wikipedia.org/wiki/Actor_model)
 

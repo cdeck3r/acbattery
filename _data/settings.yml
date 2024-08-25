@@ -7,8 +7,8 @@ disqus:
 google-ID: ''
 
 menu:
-- {name: '| HW ',   url: '#hardware-design'}
-- {name: '| SW ', url: '#battery-management-software'}
+- {name: '| HW',   url: '#hardware-design'}
+- {name: '| SW', url: '#battery-management-software'}
 - {name: '| Contact |', url: '#contact'}
 
 # Available social icons are powered by Font Awesome, so you can use any icon that they offer

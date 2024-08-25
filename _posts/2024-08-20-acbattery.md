@@ -14,7 +14,9 @@ The primary objective of this project is to optimize the use of energy generated
 
 ## Motivation
 
-Despite the relatively small scale of this setup, the integration of a battery increases energy utilization from 65% to 87%, while the payback period extends slightly from 4 years to 5 years. The annual savings, due to reduced electricity consumption, amount to approximately 191 EUR for the system with the battery, compared to 142 EUR without it. The total invest is 950 EUR.
+Despite the relatively small scale of this setup, the integration of a battery increases energy utilization from 65% to 87%, while the payback period extends slightly from 4 years to 5 years. The annual savings, due to reduced electricity consumption, amount to approximately 191 EUR for the system with the battery, compared to 142 EUR without it. 
+
+The total investment for the system is 950 EUR, which includes the cost of the PV power plant and all hardware components for the AC battery system. A Google search indicates that this amount is comparable to the prices of similar commercially available products when discounts are considered. However, the DIY approach allows for more granular operational control and offers significant learning opportunities.
 
 All values were calculated using the [Stecker-Solar-Simulator](https://solar.htw-berlin.de/rechner/stecker-solar-simulator/) developed by HTW Berlin.
 

@@ -6,7 +6,7 @@ cloud "WIFI home network" as net
 interface "Power\nsocket" as isocket
 component "AC Battery" as batt #pink
 component "Smartmeter" as sm
-component "Battery Manager" as mng 
+component "Battery Management" as mng 
 interface "Power\nsocket" as osocket
 
 component "PV power plant" as pv 

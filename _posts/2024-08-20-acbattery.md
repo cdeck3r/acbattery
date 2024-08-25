@@ -90,7 +90,7 @@ The following subsections provide the design of the three primary actors.
 
 The following UML deployment diagram illustrates the distribution of various software components for the AC battery system, which are hosted across multiple Raspberry Pi devices.
 
-[Deployed Software Components for the AC Battery System](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/cdeck3r/acbattery/main/plantuml/swdeployment.plantuml)
+![Deployed Software Components for the AC Battery System](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/cdeck3r/acbattery/main/plantuml/swdeployment.plantuml)
 
 The AC battery system requires real-time power measurements from an electricity meter that monitors both AC loads and photovoltaic (PV) energy surplus. The [vzlogger](https://github.com/volkszaehler/vzlogger) software, installed on a Raspberry Pi, connects to the electricity meter using the [SML protocol](https://de.wikipedia.org/wiki/Smart_Message_Language). 
 

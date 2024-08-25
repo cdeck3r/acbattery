@@ -1,0 +1,57 @@
+@startuml
+
+
+node "Smartmeter" <<Raspberry Pi>> as smeter {
+  component vzlogger
+}
+
+node "Electricity meter" as meter
+
+node "AC Battery" as batt {
+  node "shelly-battcharge" <<Shelly Plus 1PM>> as charge
+  node "shelly-battfeedin" <<Shelly Plus 1PM>> as feed
+  node "tasmota-battctlr" <<ESP32s>> as ctrl
+}
+
+node "Home Server" <<Raspberry Pi>> as home {
+  component "MQTT Broker" as broker
+  component "Node-RED" as nred {
+    agent "Battery Managment" as bmngt
+    artifact bmsActor
+    artifact pvActor
+    artifact invDrvActor
+    bmngt o-down- bmsActor
+    bmngt o-down- pvActor
+    bmngt o-down- invDrvActor
+  }
+}
+
+boundary WebGUI as www
+
+vzlogger -up- www
+charge -up- www
+feed -up- www
+ctrl -up- www
+
+actor "Developer" as dev
+dev -right- www
+
+meter -right-() sml
+vzlogger -down-( sml
+
+cloud "WIFI home network" as wifi
+
+vzlogger .. wifi: MQTT
+charge .. wifi: MQTT
+feed .. wifi: MQTT
+ctrl .. wifi: MQTT
+
+broker .up. wifi: MQTT
+nred .right. broker: MQTT
+
+boundary Dashboard
+actor User
+nred -down- Dashboard
+Dashboard - User
+
+@enduml

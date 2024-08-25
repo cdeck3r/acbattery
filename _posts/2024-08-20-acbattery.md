@@ -88,7 +88,17 @@ The following subsections provide the design of the three primary actors.
 
 ## Software Deployment
 
-The AC battery has several controllers.
+The following UML deployment diagram illustrates the distribution of various software components for the AC battery system, which are hosted across multiple Raspberry Pi devices.
+
+[Deployed Software Components for the AC Battery System](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/cdeck3r/acbattery/main/plantuml/swdeployment.plantuml)
+
+The AC battery system requires real-time power measurements from an electricity meter that monitors both AC loads and photovoltaic (PV) energy surplus. The [vzlogger](https://github.com/volkszaehler/vzlogger) software, installed on a Raspberry Pi, connects to the electricity meter using the [SML protocol](https://de.wikipedia.org/wiki/Smart_Message_Language). 
+
+The system employs several networked controllers to operate relays that connect the AC network to the battery for charging and discharging purposes. Each controller includes its own web-based graphical user interface (WebGUI), allowing for manual control of individual components. This feature is primarily intended for developers.
+
+The battery management actors operate within a Node-RED environment hosted on a Raspberry Pi-based home server. All devices are connected to a home Wi-Fi network and communicate using the [MQTT](https://en.wikipedia.org/wiki/MQTT) protocol to a broker running on the home server. 
+
+A dashboard provides users with insights into the current operation of the system. Notably, there is no remote access available from outside the home network.
 
 ## Contact
 

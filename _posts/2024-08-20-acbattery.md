@@ -1,6 +1,6 @@
 ---
 layout: post
-title: ""
+title: "My title"
 author: "cdeck3r"
 ---
 

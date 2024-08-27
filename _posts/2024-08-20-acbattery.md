@@ -43,7 +43,7 @@ The AC battery does not operate independently; rather, it is managed by battery 
 
 ## Hardware Design
 
-The schematics were designed with [QElectroTech](https://qelectrotech.org/). You can download the [ACBattery schematics]() in PDF format.
+The schematics were designed with [QElectroTech](https://qelectrotech.org/). You can download the [ACBattery schematics](https://github.com/cdeck3r/acbattery/blob/main/schematics/ACSpeicher.qet) in PDF format.
 
 ![schematics]()
 

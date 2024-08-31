@@ -47,6 +47,8 @@ The schematics were designed with [QElectroTech](https://qelectrotech.org/). You
 
 {% include image-gallery.html folder="/assets/schematics" %}
 
+A key component of the system is the inverter driver board, which comprises four independently controllable MOSFETs. The MOSFET on channel 1 is responsible for precharging the inverter; when the inverter is activated, this MOSFET connects the battery via a circuit that limits the current to 2A, allowing the capacitors within the inverter to precharge. After a few seconds, the driver board engages the other three MOSFETs, while the precharge channel is deactivated. At this point, the battery connects to the inverter at full load, and power is distributed across the three MOSFETs, which helps manage heat dissipation under load.
+
 ### Networked Units
 
 The AC battery incorporates networked embedded devices for controlling and monitoring its operation:
@@ -56,7 +58,7 @@ The AC battery incorporates networked embedded devices for controlling and monit
 
 ### Electrical and Thermal Characteristics
 
-In the following, there are some measurements showing the AC battery's characteristics.
+In the following, there are some measurements showing the AC battery's characteristics. The inverter was limited at 150W under load.
 
 | Inverter                                     | 95% Efficiency |
 | Step Up consumption with no load             | 2W             |

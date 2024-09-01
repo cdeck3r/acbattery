@@ -130,6 +130,6 @@ A dashboard provides users with insights into the current operation of the syste
 
 ## Contact
 
-If you are having any problems, any questions or suggestions, feel free to [file a GitHub issue](https://github.com/cdeck3r/acbattery/issues/new).
+If you are having any suggestions, feel free to [file a GitHub issue](https://github.com/cdeck3r/acbattery/issues/new).
 
 

@@ -2,11 +2,21 @@
 layout: post
 title: "My title"
 author: "cdeck3r"
+
+carousels:
+  - images: 
+    - image: assets/img/acbattery01.jpg
+    - image: assets/img/acbattery02.jpg
+    - image: assets/img/acbattery03.jpg
+    - image: assets/img/acbattery04.jpg
+    - image: assets/img/acbattery05.jpg
 ---
 
 ## About
 
 This project introduces an AC battery designed for integration with a photovoltaic (PV) power plant. 
+
+{% include carousel.html height="80" unit="%" duration="7" number="1" %}
 
 The system is installed in a residential setting, specifically a single-family home. The PV power plant has a maximum output of 600W (installed PV panels have 800Wp), while the battery has a storage capacity of 1kWh.
 

@@ -94,13 +94,25 @@ The following subsections provide the design of the three primary actors.
 
 ### `bmsActor`
 
+The `bmsActor` serves as the primary finite state machine (FSM) responsible for managing the charging and discharging operations of the battery. 
 
+![Battery Management Actor](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/cdeck3r/acbattery/main/plantuml/bmsActor.plantuml)
 
 ### `pvActor`
 
+The `pvActor` implements a hysteresis mechanism based on the duration of periods with positive power ($P > 0$) and negative power ($P < 0$), as measured by the smart meter.
+
+The state machines transition between two main states: `PV_LOW` and `PV_EXCESS`, which represent insufficient PV production and PV surplus, respectively. In the `PV_EXCESS` state, the `bmsActor` is activated to store the excess energy in the battery. When the state machine transitions to `PV_LOW`, battery charging is halted.
+
+![PV Actor](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/cdeck3r/acbattery/main/plantuml/pvActor.plantuml)
+
+Successive measurements indicating negative power ($P-$) will eventually lead to the `PV_EXCESS` state, while consecutive measurements showing positive power ($P+$) will result in a transition to the `PV_LOW` state. The parameters $a$ and $b$ define the duration thresholds for the hysteresis curve. 
 
 ### `invDrvActor`
 
+This actor is a state machine that manages the precharge behavior through the MOSFET driver board, as previously detailed in section [Precharge](#precharge).
+
+![Inverter Driver Actor](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/cdeck3r/acbattery/main/plantuml/invDrvActor.plantuml)
 
 ## Software Deployment
 

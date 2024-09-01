@@ -47,7 +47,9 @@ The schematics were designed with [QElectroTech](https://qelectrotech.org/). You
 
 {% include image-gallery.html folder="/assets/schematics" %}
 
-A key component of the system is the inverter driver board, which comprises four independently controllable MOSFETs. The MOSFET on channel 1 is responsible for precharging the inverter; when the inverter is activated, this MOSFET connects the battery via a circuit that limits the current to 2A, allowing the capacitors within the inverter to precharge. After a few seconds, the driver board engages the other three MOSFETs, while the precharge channel is deactivated. At this point, the battery connects to the inverter at full load, and power is distributed across the three MOSFETs, which helps manage heat dissipation under load.
+### Precharge
+
+A key component of the system is the inverter driver board, which comprises four independently controllable MOSFETs. The MOSFET on channel 1 is responsible for precharging the inverter. When the inverter is activated, this MOSFET connects the battery via a circuit that limits the current to 2A, allowing the capacitors within the inverter to precharge. After a few seconds, the driver board engages the other three MOSFETs, while the precharge channel is deactivated. At this point, the battery connects to the inverter at full load, and power is distributed across the three MOSFETs, which helps manage heat dissipation under load.
 
 ### Networked Units
 

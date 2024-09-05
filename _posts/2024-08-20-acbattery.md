@@ -120,6 +120,8 @@ The state machine as shown in the diagram below transitions between two main sta
 
 Successive measurements from the smart meter indicating negative power ($P-$) will eventually trigger a transition to the `PV_EXCESS` state, while consecutive measurements of positive power ($P+$) will result in a transition to the `PV_LOW` state. The parameters $a$ and $b$ define the time thresholds for the hysteresis curve that governs these transitions.
 
+The smart meter identifies the $P-$ condition, signifying a PV surplus, and generates the corresponding event when the PV system produces more power than the household's consumption plus the charging power specified by the charger's power setting (see [section on operational characteristics](#operational-characteristics)). If this condition is not met, the meter registers a $P+$ condition emitting the correspondig event.
+
 The `pvActor` functions analogously to a (non-linear) low-pass filter, effectively filtering out intermittent fluctuations between $P-$ and $P+$ measurements. It accepts more stable measurements of $P-$ or $P+$ as events that trigger a state transition to `PV_EXCESS` or `PV_LOW`, respectively.
 
 The output of the `pvActor` yields a `PV_EXCESS` state if, for a series of successive $P-$ measurement events, $t_0(P-) < ... < t_n(P-)$, the duration $\Delta t(P-) = t_n(P-) - t_0(P-) \geq a$. The parameter $a$ can be interpreted as a variant of a time constant, $a = \tau(P-)$, which represents the actor's response time to successive $P-$ measurements for a minimum duration of $a$. It should be noted that the concept of the time constant is constrained in this context, as indicated by the emphasis on key conditions.

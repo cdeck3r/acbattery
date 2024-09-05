@@ -35,11 +35,11 @@ All values were calculated using the [Stecker-Solar-Simulator](https://solar.htw
 
 The AC battery system comprises a lithium iron phosphate (LiFePo4) battery connected to an AC charger and an inverter. The accompanying diagram illustrates how these components are integrated into the grid, where both the charger and inverter rely on AC from the standard electricity supply, hence the term "AC battery."
 
-![AC Battery Concept](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/cdeck3r/acbattery/main/plantuml/battery.plantuml)
+![AC Battery Concept](https://cdn-0.plantuml.com/plantuml/png/DSmn3i8m34RXlQU02yG36rEluZeMZN3SoFajnEq1YKvF-eQtJd0WkotNvc9PDSCkEp3cdIZuLHuDUsuvDUHmgAF8qKcgolCMnB8neF6cpirf6FllHdyj9oohUlts0m00)
 
 However, the processes of converting AC to DC and back to AC are subject to efficiency losses, with each conversion having an efficiency factor of less than 1. As a result, the system experiences a net negative energy balance, meaning that more energy is consumed during charging than is subsequently recovered from the battery. The system compensates for this energy loss through the integration of a PV power plant, which is connected to the AC line and supplies excess energy when charging the battery. The following diagram depicts this configuration.
 
-![AC Battery Concept with PV](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/cdeck3r/acbattery/main/plantuml/batterywithpv.plantuml)
+![AC Battery Concept with PV](https://cdn-0.plantuml.com/plantuml/png/DSmn3i8m38NXlQU02yG36rEluZeMZKZSo7cculO42QOdVTBxrm5sHAlBjPZKo1fUBplGnvt8-KoFWZss6Efo6DIGv6WaMULvSsBP651_K-DYr2lRjqO_FUUvlzAVbrKjp_q0)
 
 When the PV system generates surplus energy, it is stored in the battery for later use. The stored energy can then be supplied to power outlets as needed. If the conversion processes are managed effectively, the overall energy balance can become positive.
 
@@ -47,7 +47,7 @@ When the PV system generates surplus energy, it is stored in the battery for lat
 
 At a more conceptual level, the AC battery functions as a device for storing energy from the grid and subsequently feeding it back into the system. An external smart meter monitors the photovoltaic (PV) excess. When excess energy is detected, the battery's charger connects to the AC line to initiate charging. The charger disengages once the excess energy is no longer available. When the battery reaches full capacity or energy demand arises, the inverter connects to the AC line to discharge the stored energy. The following image illustrates the system context.
 
-![AC Battery System Context](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/cdeck3r/acbattery/main/plantuml/systemcontext.plantuml)
+![AC Battery System Context](https://cdn-0.plantuml.com/plantuml/png/DOmx2iD030LxdoAvmAf8byfNaRKYNh8h6-c9nBVF1rmD3CpC0NRawDErcVIicjulAx37dSZvLHuDQouPwh8Pr51a6oHLvNbpObaOK3zeS3FQEzllHd44TFoBDygffrcjVla1)
 
 The AC battery does not operate independently; rather, it is managed by battery management software hosted on a device within the same Wi-Fi network, to which both the AC battery and the smart meter are connected. The management software retrieves data from the smart meter and remotely controls the battery's charger and inverter based on the current energy conditions.
 
@@ -94,7 +94,7 @@ In the following, there are some measurements showing the AC battery's character
 The software design is structured as a set of communicating [state machines](https://en.wikipedia.org/wiki/Finite-state_machine) based on the [actor model](https://en.wikipedia.org/wiki/Actor_model). The following diagram depicts the main actors and the events they exchange with each other.
 
 
-![Communicating Actors](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/cdeck3r/acbattery/main/plantuml/actors.plantuml)
+![Communicating Actors](https://cdn-0.plantuml.com/plantuml/png/DOmn3i8m34NtdW8k40ziJBsAwrWq8d4g-rk8srE6Ja_l3MyDi2D7N-xDf6VLz7xRWIEUHCwVychOSyjGbsbGGv4vIAhA--74iZ6W_gN1pUZeRF_RsJ4zokNBgbPF_W00)
 
 In this model, each actor is a state machine that maintains its own state. State transitions occur in response to events, which are received from other actors or the external environment.
 
@@ -104,7 +104,7 @@ The following subsections provide the design of the three primary actors.
 
 The `bmsActor` serves as the primary finite state machine (FSM) responsible for managing the charging and discharging operations of the battery. The following diagram depicts the actor.
 
-![Battery Management Actor](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/cdeck3r/acbattery/main/plantuml/bmsActor.plantuml)
+![Battery Management Actor](https://cdn-0.plantuml.com/plantuml/png/DSon3G8n34RX_gQ01UA2ZkeOnN4iBY9n8kUt4Di3nLLFUiMtBx0ZUjkkrQH5qV1sEO2vxaJEx_IiE2B7KfTXK4EIqKcAoklcn98PKFzGvseq6zjVezpNGp0ydMVRrSglNm00)
 
 Upon receiving a `PV_EXCESS` event, the system initiates the battery charging process. It will exit this state upon receiving a `PV_LOW` event. Both events are triggered by the [`pvActor` state machine](#pvactor).
 
@@ -116,7 +116,7 @@ The `pvActor` implements a hysteresis mechanism based on the duration of periods
 
 The state machine as shown in the diagram below transitions between two main states: `PV_LOW` and `PV_EXCESS`, which represent insufficient PV production and PV surplus, respectively. In the `PV_EXCESS` state, the `bmsActor` is activated to store the excess energy in the battery. When the state machine transitions to `PV_LOW`, battery charging is halted.
 
-![PV Actor](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/cdeck3r/acbattery/main/plantuml/pvActor.plantuml)
+![PV Actor](https://cdn-0.plantuml.com/plantuml/png/DSon3G8n34RX_gQ01UA2ZkeOnUTO929n8kStYEs1Wkf9h_Zs1NP4RzkvchJ86jvE1PZhIkJyIlUA4aSiTHa6DIGPdIIhF2vEB0S3wc_gN8rcO_jfD9ytmV3q7zkkbh_z0000)
 
 Successive measurements from the smart meter indicating negative power ($P-$) will eventually trigger a transition to the `PV_EXCESS` state, while consecutive measurements of positive power ($P+$) will result in a transition to the `PV_LOW` state. The parameters $a$ and $b$ define the time thresholds for the hysteresis curve that governs these transitions.
 
@@ -130,13 +130,13 @@ Similarly, $b = \tau(P+)$ defines the actor's time constant for its response to 
 
 This actor is a state machine that manages the precharge behavior through the MOSFET driver board, as previously detailed in section [Precharge](#precharge). The following diagram depicts the actor.
 
-![Inverter Driver Actor](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/cdeck3r/acbattery/main/plantuml/invDrvActor.plantuml)
+![Inverter Driver Actor](https://cdn-0.plantuml.com/plantuml/png/DSmn3i8m34RXlQU02yG36rEHk8ZhM3GYSIhdTn2t1mQc9xtXMmVO4Qqkvs9I8sjuFUt0CQv4pg_qADXZYw4ktQ269BsHP9NdnObbOq3zJOsBqL7PVXeLctUVDq7tz9_BgfQ__G00)
 
 ## Software Deployment
 
 The following UML deployment diagram illustrates the distribution of various software components for the AC battery system, which are hosted across multiple Raspberry Pi devices.
 
-![Deployed Software Components for the AC Battery System](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/cdeck3r/acbattery/main/plantuml/swdeployment.plantuml)
+![Deployed Software Components for the AC Battery System](https://cdn-0.plantuml.com/plantuml/png/DOonhSCm30LxJ_7_0cQHBfLNeIaY5a9H0lK8mzidBb8TSC3TDi61RBRyLnVBeXdsTm1ZFec2p_LLSUIUKqEwGnshz4PILDwF89QT0OsB6bUdOUptZUPPT5Y_sXtyxBAfboy_)
 
 The AC battery system requires real-time power measurements from an electricity meter that monitors both AC loads and photovoltaic (PV) energy surplus. The [vzlogger](https://github.com/volkszaehler/vzlogger) software, installed on a Raspberry Pi, connects to the electricity meter using the [SML protocol](https://de.wikipedia.org/wiki/Smart_Message_Language). 
 

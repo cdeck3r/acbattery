@@ -106,7 +106,7 @@ The `bmsActor` serves as the primary finite state machine (FSM) responsible for 
 
 ![Battery Management Actor](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/cdeck3r/acbattery/main/plantuml/bmsActor.plantuml)
 
-Upon receiving a `PV_EXCESS` event, the system initiates the battery charging process. It will exit this state upon receiving a `PV_LOW` event. Both events are triggered by the [`pvActor` state machine](#pvActor).
+Upon receiving a `PV_EXCESS` event, the system initiates the battery charging process. It will exit this state upon receiving a `PV_LOW` event. Both events are triggered by the [`pvActor` state machine](#pvactor).
 
 The system discharges the battery when instructed to supply the household's base load and will automatically exit this state if a `PV_EXCESS` event occurs or the battery charge becomes critically low. Additionally, the state machine responds to events triggered by manual interventions that alter the system's operational state.
 

@@ -68,6 +68,14 @@ The AC battery incorporates networked embedded devices for controlling and monit
 - **Shelly Plus 1PM**: A Wi-Fi-enabled relay that manages the AC power supply to both the charger and the inverter.
 - **ESP32 NodeMCU**: A microcontroller that controls the MOSFET driver board to switch DC power to the inverter and retrieves the battery's State of Charge (SoC) from the shunt.
 
+### Operational Characteristics
+
+The AC battery system supports charging and discharging at varying power levels.
+
+The charger offers three manually adjustable power settings: 5A, 10A, and 20A, corresponding to power consumption rates of 60W, 120W, and 240W from the grid during charging. Although the charging power cannot be adjusted continuously, these settings provide adequate control across different seasonal variations in solar irradiance. For instance, during the summer months, the charger is typically set to its maximum level of 240W, while in winter, it is reduced to 60W in anticipation of lower solar irradiance. During spring and autumn, a setting of 120W is generally used. This heuristic approach has proven effective; however, continuous monitoring of solar irradiance could further refine this method and enhance system efficiency.
+
+The inverter power, adjustable via software, ranges between 0 and 300W and is set based on the expected base load. In the current configuration, the system is designed to feed power into the grid during nighttime, with the inverter power set to 150W.
+
 ### Electrical and Thermal Characteristics
 
 In the following, there are some measurements showing the AC battery's characteristics. The inverter was limited at 150W under load.

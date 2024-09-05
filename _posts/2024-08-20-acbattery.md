@@ -91,7 +91,7 @@ In the following, there are some measurements showing the AC battery's character
 
 ## Battery Management Software
 
-The software design is structured as a set of communicating [state machines](https://en.wikipedia.org/wiki/Finite-state_machine) based on the [actor model](https://en.wikipedia.org/wiki/Actor_model)
+The software design is structured as a set of communicating [state machines](https://en.wikipedia.org/wiki/Finite-state_machine) based on the [actor model](https://en.wikipedia.org/wiki/Actor_model). The following diagram depicts the main actors and the events they exchange with each other.
 
 
 ![Communicating Actors](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/cdeck3r/acbattery/main/plantuml/actors.plantuml)
@@ -102,7 +102,7 @@ The following subsections provide the design of the three primary actors.
 
 ### `bmsActor`
 
-The `bmsActor` serves as the primary finite state machine (FSM) responsible for managing the charging and discharging operations of the battery. 
+The `bmsActor` serves as the primary finite state machine (FSM) responsible for managing the charging and discharging operations of the battery. The following diagram depicts the actor.
 
 ![Battery Management Actor](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/cdeck3r/acbattery/main/plantuml/bmsActor.plantuml)
 
@@ -114,7 +114,7 @@ The system discharges the battery when instructed to supply the household's base
 
 The `pvActor` implements a hysteresis mechanism based on the duration of periods with positive power ($P > 0$) and negative power ($P < 0$), as measured by the smart meter.
 
-The state machines transition between two main states: `PV_LOW` and `PV_EXCESS`, which represent insufficient PV production and PV surplus, respectively. In the `PV_EXCESS` state, the `bmsActor` is activated to store the excess energy in the battery. When the state machine transitions to `PV_LOW`, battery charging is halted.
+The state machine as shown in the diagram below transitions between two main states: `PV_LOW` and `PV_EXCESS`, which represent insufficient PV production and PV surplus, respectively. In the `PV_EXCESS` state, the `bmsActor` is activated to store the excess energy in the battery. When the state machine transitions to `PV_LOW`, battery charging is halted.
 
 ![PV Actor](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/cdeck3r/acbattery/main/plantuml/pvActor.plantuml)
 
@@ -128,7 +128,7 @@ Similarly, $b = \tau(P+)$ defines the actor's time constant for its response to 
 
 ### `invDrvActor`
 
-This actor is a state machine that manages the precharge behavior through the MOSFET driver board, as previously detailed in section [Precharge](#precharge).
+This actor is a state machine that manages the precharge behavior through the MOSFET driver board, as previously detailed in section [Precharge](#precharge). The following diagram depicts the actor.
 
 ![Inverter Driver Actor](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/cdeck3r/acbattery/main/plantuml/invDrvActor.plantuml)
 

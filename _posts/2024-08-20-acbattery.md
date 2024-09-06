@@ -124,7 +124,7 @@ The smart meter identifies the $P-$ condition, signifying a PV surplus, and gene
 
 The `pvActor` functions analogously to a (non-linear) low-pass filter, effectively filtering out intermittent fluctuations between $P-$ and $P+$ measurements. It accepts more stable measurements of $P-$ or $P+$ as events that trigger a state transition to `PV_EXCESS` or `PV_LOW`, respectively.
 
-The output of the `pvActor` yields a `PV_EXCESS` state if, for a series of successive $P-$ measurement events, $t_0(P-) < ... < t_n(P-)$, the duration $\Delta t(P-) = t_n(P-) - t_0(P-) \geq a$. The parameter $a$ can be interpreted as a variant of a time constant, $a = \tau(P-)$, which represents the actor's response time to successive $P-$ measurements for a minimum duration of $a$. It should be noted that the concept of the time constant is constrained in this context, as indicated by the emphasis on key conditions.
+The output of the `pvActor` yields a `PV_EXCESS` state if, for a series of successive $P-$ measurement events, $t_0(P-) < ... < t_n(P-)$, the duration $\Delta t(P-) = t_n(P-) - t_0(P-) \geq a$. The parameter $a$ can be interpreted as a variant of a time constant, $a = \tau(P-)$, which represents the actor's response time to _successive_ $P-$ measurements for a _minimum_ duration of $a$. It should be noted that the concept of the time constant is constrained in this context, as indicated by the emphasis on key conditions.
 
 Similarly, $b = \tau(P+)$ defines the actor's time constant for its response to the `PV_LOW` state based on $P+$ measurements.
 
